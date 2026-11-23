@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Car Model - Hyperion Racing Team</title>
+    <meta name="description" content="Explore our 3D car model - Hyperion Racing Team's Formula Student race car">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="icon" type="image/png" href="views/Hyperion Logo (1).png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .car-page-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 2rem 2rem;
+            background: var(--primary-black);
+        }
+
+        .car-viewer-section {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sketchfab-embed-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            background: var(--secondary-black);
+            border: 2px solid var(--border-gray);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .sketchfab-embed-wrapper:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 15px 50px rgba(220, 38, 38, 0.3);
+        }
+
+        .sketchfab-embed-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .sketchfab-embed-wrapper p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 0.5rem 1rem;
+            margin: 0;
+            font-size: 13px;
+            color: #4A4A4A;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .sketchfab-embed-wrapper p a {
+            color: #1CAAD9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sketchfab-embed-wrapper p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .car-page-container {
+                padding: 80px 1rem 1rem;
+            }
+
+            .sketchfab-embed-wrapper {
+                padding-bottom: 75%; /* Taller aspect ratio on mobile */
+                border-radius: 10px;
+            }
+
+            .sketchfab-embed-wrapper iframe {
+                border-radius: 10px;
+            }
+
+            .sketchfab-embed-wrapper p {
+                font-size: 11px;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .car-page-container {
+                padding: 70px 0.5rem 0.5rem;
+            }
+
+            .sketchfab-embed-wrapper {
+                padding-bottom: 100%; /* Even taller on small screens */
+            }
+        }
+
+        /* Ensure full viewport height on mobile */
+        @media (max-height: 600px) and (max-width: 768px) {
+            .car-page-container {
+                min-height: calc(100vh - 150px);
+                padding-top: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="https://pillai.edu.in/" target="_blank" rel="noopener noreferrer">
+                    <img src="views/pillai-university.jpg" alt="Pillai University" style="height: 60px; width: auto;">
+                </a>
+                <a href="index.html">
+                    <img src="views/Hyperion Logo (1).png" alt="Hyperion Racing" style="height: 100px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="crowdfunding.html">Support</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Car Viewer Section -->
+    <div class="car-page-container">
+        <div class="car-viewer-section">
+            <div class="sketchfab-embed-wrapper">
+                <iframe 
+                    title="HRT_Car_Website" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true" 
+                    allow="autoplay; fullscreen; xr-spatial-tracking" 
+                    xr-spatial-tracking 
+                    execution-while-out-of-viewport 
+                    execution-while-not-rendered 
+                    web-share 
+                    src="https://sketchfab.com/models/8c21616d43ef461888cb8a236312708d/embed">
+                </iframe>
+                <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                    <a href="https://sketchfab.com/3d-models/hrt-car-website-8c21616d43ef461888cb8a236312708d?utm_medium=embed&utm_campaign=share-popup&utm_content=8c21616d43ef461888cb8a236312708d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">HRT_Car_Website</a> 
+                    by <a href="https://sketchfab.com/ritvik22mech?utm_medium=embed&utm_campaign=share-popup&utm_content=8c21616d43ef461888cb8a236312708d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">ritvik22mech</a> 
+                    on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=8c21616d43ef461888cb8a236312708d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hyperion Racing</h3>
+                <p>Speed Beyond Limits • Performance Beyond Imagination</p>
+                <p>Pushing the boundaries of automotive engineering and racing performance.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="gallery.html">Gallery</a></p>
+                <p><a href="events.html">Events</a></p>
+                <p><a href="sponsors.html">Sponsors</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <p><a href="crowdfunding.html">Donate</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+                <p><a href="sponsors.html">Become a Sponsor</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p>Follow us on social media for the latest updates and behind-the-scenes content.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://www.instagram.com/hyperion_racing_team/?hl=en" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">Instagram</a>
+                    <a href="https://in.linkedin.com/company/hyperion-racing-team" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">LinkedIn</a>
+                    <a href="https://www.youtube.com/@HyperionRacingTeam" target="_blank" rel="noopener noreferrer" style="color: var(--accent-red);">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hyperion Racing Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="public/js/main.js"></script>
+</body>
+</html>
+

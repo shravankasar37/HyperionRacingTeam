@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Hyperion Racing Team</title>
+    <meta name="description" content="View upcoming and past racing events featuring Hyperion Racing Team">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="icon" type="image/png" href="views/Hyperion Logo (1).png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="https://pillai.edu.in/" target="_blank" rel="noopener noreferrer">
+                    <img src="views/pillai-university.jpg" alt="Pillai University" style="height: 60px; width: auto;">
+                </a>
+                <a href="index.html">
+                    <img src="views/Hyperion Logo (1).png" alt="Hyperion Racing" style="height: 100px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="crowdfunding.html">Support</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="height: 60vh;">
+        <div class="hero-content">
+            <h1>Events</h1>
+            <p>Upcoming Races • Past Victories • Championship Calendar</p>
+        </div>
+    </section>
+
+    <!-- Event Filter -->
+    <section class="section" style="padding-top: 2rem;">
+        <div class="text-center">
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem;">
+                <button class="btn btn-secondary event-filter active" data-filter="upcoming">Upcoming</button>
+                <button class="btn btn-secondary event-filter" data-filter="past">Past Events</button>
+                <button class="btn btn-secondary event-filter" data-filter="all">All Events</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    <section class="section" id="upcoming-events" style="padding-top: 0;">
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+        </div>
+        <div class="grid grid-2" id="upcomingEventsContainer">
+            <div class="card-modern fade-in">
+                <h3>Formula Bharat 2026</h3>
+                <p><strong>Date:</strong> January 21-26, 2026</p>
+                <p><strong>Location:</strong> Kari Motor Speedway, India</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p>Formula Bharat 2026 is India's premier Formula Student competition, bringing together the best engineering teams from across the country. We'll be showcasing our latest innovations in combustion technology, competing in static and dynamic events including design, cost, business presentation, acceleration, skid pad, autocross, and endurance races.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: var(--accent-red); color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Upcoming</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Section -->
+    <section class="section" id="past-events" style="background: var(--secondary-black); display: none;">
+        <div class="section-title">
+            <h2>Past Events</h2>
+        </div>
+        <div class="grid grid-2" id="pastEventsContainer">
+            <div class="card-modern fade-in">
+                <h3>Formula Imperial 2024</h3>
+                <p><strong>Year:</strong> 2024</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Overall Rank: 6th</li>
+                    <li>Engineering Design: 5th</li>
+                    <li>Business Plan: 8th</li>
+                    <li>Cost: 8th</li>
+                </ul>
+                <p style="margin-top: 1rem;">A season that showcased disciplined engineering and cohesive teamwork.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>Formula Bharat 2023</h3>
+                <p><strong>Year:</strong> 2023</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Overall Rank: 16th</li>
+                    <li>Business Plan: 7th</li>
+                    <li>Cost Ranking: 9th</li>
+                </ul>
+                <p style="margin-top: 1rem;">This proved our ability to analyze, adapt, and return with refinement.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>The Engineering Era (2020-2022)</h3>
+                <p><strong>Years:</strong> 2020-2022</p>
+                <p><strong>Type:</strong> Formula Student Competitions</p>
+                <p><strong>Highlights:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Weight reductions through smarter tubing profiles</li>
+                    <li>Suspension revisions for improved control</li>
+                    <li>Powertrain reliability enhancements</li>
+                </ul>
+                <p><strong>Best Ranks:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Engineering Design: Top 18</li>
+                    <li>Business Plan: Top 22</li>
+                </ul>
+                <p style="margin-top: 1rem;">These seasons were defined by sharp technical evolution. Our garage became an R&D lab.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>Champions of Champions 2019</h3>
+                <p><strong>Year:</strong> 2019</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>🏆 Winner: Team Spirit Award</li>
+                    <li>Business Plan: 2nd</li>
+                    <li>Overall Ranking: 5th</li>
+                </ul>
+                <p style="margin-top: 1rem;">This is where Hyperion's identity became culture: resilient, united, driven.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>Formula Student India 2016</h3>
+                <p><strong>Year:</strong> 2016</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Overall Rank: 18th</li>
+                </ul>
+                <p style="margin-top: 1rem;">Growing our understanding of endurance, reliability, and design validation under pressure.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>Formula Design Challenge 2015</h3>
+                <p><strong>Year:</strong> 2015</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>Overall Rank: 20th</li>
+                    <li>Business Plan: 5th</li>
+                    <li>🏆 Real Case Scenario: 1st</li>
+                </ul>
+                <p style="margin-top: 1rem;">This season taught us how strategy wins as much as speed.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+            <div class="card-modern fade-in">
+                <h3>Formula Student Germany 2014</h3>
+                <p><strong>Year:</strong> 2014</p>
+                <p><strong>Type:</strong> Formula Student Competition</p>
+                <p><strong>Results:</strong></p>
+                <ul style="text-align: left; margin-top: 0.5rem;">
+                    <li>✅ Technical Inspection: Passed</li>
+                    <li>✅ Tilt Test: Passed</li>
+                </ul>
+                <p style="margin-top: 1rem;">Hyperion Racing entered the world stage, clearing technical inspection and tilt on the first attempt. Not just a debut—a statement of capability.</p>
+                <div style="margin-top: 1rem;">
+                    <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Event Statistics -->
+    <section class="section" style="background: var(--secondary-black);">
+        <div class="section-title">
+            <h2>Event Statistics</h2>
+        </div>
+        <div class="grid grid-4">
+            <div class="stat-card fade-in">
+                <div class="stat-counter" data-target="10">0</div>
+                <div class="stat-label">Competitions Attended</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-counter" data-target="35">0+</div>
+                <div class="stat-label">Technical & Non-Technical Rounds</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-counter" data-target="100">0+</div>
+                <div class="stat-label">Alumni Part of HRT</div>
+            </div>
+            <div class="stat-card fade-in">
+                <div class="stat-counter" data-target="31">0+</div>
+                <div class="stat-label">Active Team Members</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hyperion Racing</h3>
+                <p>Speed Beyond Limits • Performance Beyond Imagination</p>
+                <p>Pushing the boundaries of automotive engineering and racing performance.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="gallery.html">Gallery</a></p>
+                <p><a href="events.html">Events</a></p>
+                <p><a href="sponsors.html">Sponsors</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <p><a href="crowdfunding.html">Donate</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+                <p><a href="sponsors.html">Become a Sponsor</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p>Follow us on social media for the latest updates and behind-the-scenes content.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://www.instagram.com/hyperion_racing_team/?hl=en" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">Instagram</a>
+                    <a href="https://in.linkedin.com/company/hyperion-racing-team" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">LinkedIn</a>
+                    <a href="https://www.youtube.com/@HyperionRacingTeam" target="_blank" rel="noopener noreferrer" style="color: var(--accent-red);">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hyperion Racing Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="public/js/main.js"></script>
+    <script>
+        // Animated Counter
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            const hasPlus = element.textContent.includes('+');
+            const hasPercent = element.textContent.includes('%');
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    const counter = entry.target.querySelector('.stat-counter');
+                    if (counter && !counter.classList.contains('animated')) {
+                        counter.classList.add('animated');
+                        animateCounter(counter);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Event Filter Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.event-filter');
+            const upcomingSection = document.getElementById('upcoming-events');
+            const pastSection = document.getElementById('past-events');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    if (filter === 'upcoming') {
+                        upcomingSection.style.display = 'block';
+                        pastSection.style.display = 'none';
+                    } else if (filter === 'past') {
+                        upcomingSection.style.display = 'none';
+                        pastSection.style.display = 'block';
+                    } else if (filter === 'all') {
+                        upcomingSection.style.display = 'block';
+                        pastSection.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Hyperion Racing Team</title>
+    <meta name="description" content="Meet the Hyperion Racing Team - Our leadership and department members">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="icon" type="image/png" href="views/Hyperion Logo (1).png">
+    <style>
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin: 3rem 0 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.05));
+            border-radius: 15px;
+            border: 2px solid var(--accent-red);
+        }
+        
+        .section-header h2 {
+            color: var(--accent-red);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .member-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid var(--border-gray);
+            background: var(--secondary-black);
+            width: 100%;
+            max-width: 280px;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .member-card:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 15px 40px rgba(220, 38, 38, 0.4);
+            transform: translateY(-10px);
+        }
+        
+        .member-card img {
+            width: 100%;
+            height: 350px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+            background: var(--secondary-black);
+            border-radius: 15px;
+        }
+        
+        .member-placeholder {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease;
+        }
+        
+        .member-placeholder::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: #3a3a3a;
+            border-radius: 50%;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .member-placeholder::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 30%;
+            background: #3a3a3a;
+            border-radius: 50% 50% 0 0;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .member-card:hover img,
+        .member-card:hover .member-placeholder {
+            transform: scale(1.05);
+        }
+        
+        .member-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .member-card:hover .member-overlay {
+            transform: translateY(0);
+        }
+        
+        .member-name {
+            color: var(--primary-white);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .member-role {
+            color: var(--accent-red);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .member-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-red);
+            color: var(--primary-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .member-card:hover .member-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .leadership-badge {
+            background: linear-gradient(135deg, var(--accent-red), #b91c1c);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5);
+        }
+        
+        .department-badge {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+        }
+        
+        .department-section {
+            margin: 4rem 0;
+        }
+        
+        .scroll-indicator {
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-gray);
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .team-section {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.2rem;
+            }
+            
+            .member-card {
+                max-width: 220px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (min-width: 1400px) {
+            .team-section {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="https://pillai.edu.in/" target="_blank" rel="noopener noreferrer">
+                    <img src="views/pillai-university.jpg" alt="Pillai University" style="height: 60px; width: auto;">
+                </a>
+                <a href="index.html">
+                    <img src="views/Hyperion Logo (1).png" alt="Hyperion Racing" style="height: 100px; width: auto;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="crowdfunding.html">Support</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="height: 50vh;">
+        <div class="hero-content">
+            <h1>Team Gallery</h1>
+            <p>Meet the Champions Behind Hyperion Racing</p>
+        </div>
+    </section>
+
+    <!-- Main Team Section -->
+    <section class="section">
+        <div class="section-header fade-in">
+            <h2>🏆 Main Team</h2>
+            <p>Leadership & Core Team Members</p>
+        </div>
+        <div class="team-section">
+            <!-- Captain -->
+            <div class="member-card fade-in">
+                <img src="public/images/gallery/main-team/Sakpal(Captain).jpg" alt="Captain" onerror="this.style.display='none';">
+                <div class="member-badge leadership-badge">Captain</div>
+                <div class="member-overlay">
+                    <div class="member-name">Nisarg Sakpal</div>
+                    <div class="member-role">Team Captain</div>
+                </div>
+            </div>
+            
+            <!-- Vice Captain -->
+            <div class="member-card fade-in">
+                <img src="public/images/gallery/main-team/Dev(Vice Captain).jpg" alt="Vice Captain" onerror="this.style.display='none';">
+                <div class="member-badge leadership-badge">Vice Captain</div>
+                <div class="member-overlay">
+                    <div class="member-name">Dev Lokhande</div>
+                    <div class="member-role">Team Vice Captain</div>
+                </div>
+            </div>
+            
+            <!-- Treasurer -->
+            <div class="member-card fade-in">
+                <img src="public/images/gallery/main-team/Abijay(Treasurer).jpg" alt="Treasurer" onerror="this.style.display='none';">
+                <div class="member-badge leadership-badge">Treasurer</div>
+                <div class="member-overlay">
+                    <div class="member-name">Abijay K Sajesh</div>
+                    <div class="member-role">Treasurer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="section" style="background: var(--secondary-black); padding-top: 4rem;">
+        <div class="section-header fade-in">
+            <h2>👥 Departments</h2>
+            <p>Specialized Teams Driving Excellence</p>
+        </div>
+        
+        <!-- Administration Department -->
+        <div class="department-section" id="administration">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Administration</h2>
+                <p>8 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Raut (head).jpg" alt="Administration Lead" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Aditya Raut</div>
+                        <div class="member-role">Administration Lead </div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Shelar.jpg" alt="Administration Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Dhiraj Shelar</div>
+                        <div class="member-role">Administration(Documentation)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Vishal.jpg" alt="Administration Member 3" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Vishal Bhoye </div>
+                        <div class="member-role">Administration(Graphic Designer)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Sudeesh.jpg" alt="Administration Member 4" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Ritvik Sudeesh</div>
+                        <div class="member-role">Administration(Website Developer)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Lad.jpg" alt="Administration Member 5" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Vibhav Lad</div>
+                        <div class="member-role">Administration(Team Manager)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/Abijay.jpg" alt="Administration Member 7" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Abijay K Sajesh</div>
+                        <div class="member-role">Administration(Financial Manager)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/nope.PNG" alt="Pranav Shetty" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Pranav Shetty</div>
+                        <div class="member-role">Administration(Assistant Marketing Manager)</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/administration/nope.PNG" alt="Abhay Nagrare" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Admin</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Abhay Nagrare</div>
+                        <div class="member-role">Administration Team Member</div>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+        <!-- Braking Department -->
+        <div class="department-section" id="braking">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Braking</h2>
+                <p>4 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/braking/Borate(head).jpg" alt="Braking Member 1" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Braking</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Om Borate</div>
+                        <div class="member-role">Braking Lead</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/braking/Nawale.jpg" alt="Braking Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Braking</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Archit Nawale</div>
+                        <div class="member-role">Braking Team Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/braking/Patil.jpg" alt="Braking Member 3" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Braking</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Kaushal Patil</div>
+                        <div class="member-role">Braking Team Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/braking/yahya.jpg" alt="Braking Member 4" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Braking</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Yahya Lokhandwala</div>
+                        <div class="member-role">Braking Team Member</div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+        <!-- Chassis Department -->
+        <div class="department-section" id="chassis">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Chassis</h2>
+                <p>4 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/chassis/Pratap(head).jpg" alt="Chassis Member 1" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Chassis</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Anmol P.Singh</div>
+                        <div class="member-role">Chassis Lead</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/chassis/Gawade.jpg" alt="Chassis Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Chassis</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Vrushab Gawade</div>
+                        <div class="member-role">Chassis Co-Lead </div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/chassis/Chavan.jpg" alt="Chassis Member 4" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Chassis</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Rutvik Chavan</div>
+                        <div class="member-role">Chassis Team Member</div>
+                    </div>
+                </div>
+            </div>
+                </div>
+                
+        <!-- Electronics Department -->
+        <div class="department-section" id="electronics">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Electronics</h2>
+                <p>3 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/electronics/Dev(head).jpg" alt="Electronics Member 1" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Electronics</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Dev Lokhande</div>
+                        <div class="member-role">Electronics Lead</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/electronics/Gawai.jpg" alt="Electronics Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Electronics</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Pranav Gawai</div>
+                        <div class="member-role">Electronics Team Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/electronics/Gaurang.jpg" alt="Electronics Member 3" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Electronics</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Gaurang Bhadawate</div>
+                        <div class="member-role">Electronics Team Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Powertrain Department -->
+        <div class="department-section" id="powertrain">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Powertrain</h2>
+                <p>4 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/powertrain/Swaraj(head).jpg" alt="Powertrain Member 1" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Powertrain</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Swaraj Doiphode</div>
+                        <div class="member-role">Powertrain Lead</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/powertrain/Sakpal.jpg" alt="Powertrain Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Powertrain</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Nisarg Sakpal</div>
+                        <div class="member-role">Powertrain Team Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/powertrain/Manas.jpg" alt="Powertrain Member 3" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Powertrain</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Manas Kharwade</div>
+                        <div class="member-role">Powertrain Team Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/powertrain/Bind.jpg" alt="Powertrain Member 4" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">Powertrain</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Anand Bind</div>
+                        <div class="member-role">Powertrain Team Member</div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Vehicle Dynamics Department -->
+        <div class="department-section" id="vehicle-dynamics">
+            <div class="section-header fade-in" style="margin: 2rem 0;">
+                <h2 style="font-size: 2rem;">Vehicle Dynamics</h2>
+                <p>5 Team Members</p>
+            </div>
+            <div class="team-section">
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/vehicle-dynamics/Shetty(head).jpg" alt="Vehicle Dynamics Member 1" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">VD</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Aryan Shetty</div>
+                        <div class="member-role">Vehicle Dynamics Lead</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/vehicle-dynamics/Nair.jpg" alt="Vehicle Dynamics Member 2" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">VD</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Anugrah Nair</div>
+                        <div class="member-role">Vehicle Dynamics Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/vehicle-dynamics/Nabeel.jpg" alt="Vehicle Dynamics Member 3" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">VD</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Nabeel Idris</div>
+                        <div class="member-role">Vehicle Dynamics Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/vehicle-dynamics/Patil.jpg" alt="Vehicle Dynamics Member 4" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">VD</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Sujeet Patil</div>
+                        <div class="member-role">Vehicle Dynamics Member</div>
+                    </div>
+                </div>
+                <div class="member-card fade-in">
+                    <img src="public/images/gallery/vehicle-dynamics/Sathe.jpg" alt="Vehicle Dynamics Member 5" onerror="this.style.display='none';">
+                    <div class="member-badge department-badge">VD</div>
+                    <div class="member-overlay">
+                        <div class="member-name">Yashodeep Sathe</div>
+                        <div class="member-role">Vehicle Dynamics Member</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Statistics -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Team Statistics</h2>
+        </div>
+        <div class="grid grid-4">
+            <div class="text-center fade-in">
+                <h3 style="font-size: 3rem; color: var(--accent-red); margin-bottom: 0.5rem;">31</h3>
+                <p style="font-weight: 600;">Total Members</p>
+            </div>
+            <div class="text-center fade-in">
+                <h3 style="font-size: 3rem; color: var(--accent-red); margin-bottom: 0.5rem;">6</h3>
+                <p style="font-weight: 600;">Departments</p>
+            </div>
+            <div class="text-center fade-in">
+                <h3 style="font-size: 3rem; color: var(--accent-red); margin-bottom: 0.5rem;">3</h3>
+                <p style="font-weight: 600;">Leadership Team</p>
+            </div>
+            <div class="text-center fade-in">
+                <h3 style="font-size: 3rem; color: var(--accent-red); margin-bottom: 0.5rem;">100%</h3>
+                <p style="font-weight: 600;">Dedication</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hyperion Racing</h3>
+                <p>Speed Beyond Limits • Performance Beyond Imagination</p>
+                <p>Pushing the boundaries of automotive engineering and racing performance.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="about.html">About Us</a></p>
+                <p><a href="gallery.html">Gallery</a></p>
+                <p><a href="events.html">Events</a></p>
+                <p><a href="sponsors.html">Sponsors</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <p><a href="crowdfunding.html">Donate</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+                <p><a href="sponsors.html">Become a Sponsor</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p>Follow us on social media for the latest updates and behind-the-scenes content.</p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://www.instagram.com/hyperion_racing_team/?hl=en" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">Instagram</a>
+                    <a href="https://in.linkedin.com/company/hyperion-racing-team" target="_blank" rel="noopener noreferrer" style="margin-right: 1rem; color: var(--accent-red);">LinkedIn</a>
+                    <a href="https://www.youtube.com/@HyperionRacingTeam" target="_blank" rel="noopener noreferrer" style="color: var(--accent-red);">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hyperion Racing Team. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="public/js/main.js"></script>
+    <script>
+        // Smooth scroll animation for fade-in elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
